@@ -23,22 +23,18 @@ public class AuthController {
     
     // Endpoint đăng ký
     @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(
+    public ResponseEntity<?> register(
         @Valid @RequestBody RegisterRequest request
     ) {
-        AuthResponse response = authService.register(request);
-        return ResponseEntity
-                .status(HttpStatus.CREATED) // 201 Created
-                .body(response);
+        return authService.register(request);
     }
     
     // Endpoint đăng nhập
     @PostMapping("/login")
 
-    public ResponseEntity<AuthResponse> login(
+    public ResponseEntity<?> login(
         @Valid @RequestBody LoginRequest request
     ) {
-        AuthResponse response = authService.login(request);
-        return ResponseEntity.ok(response); // 200 OK
+        return authService.login(request);
     }
 }

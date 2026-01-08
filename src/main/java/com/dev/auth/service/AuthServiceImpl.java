@@ -2,7 +2,8 @@ package com.dev.auth.service;
 
 import java.util.List;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,15 +23,19 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public AuthResponse register(RegisterRequest request) {
+    public ResponseEntity register(RegisterRequest request) {
         // 1.Check username đã tồn tại chưa
         if (userRepository.existsByUsername(request.getUsername())) {
-            throw new RuntimeException("Username đã tồn tại!");
+            return ResponseEntity
+            .status(HttpStatus.CONFLICT)
+                    .body("{\"message\": \"Username đã tồn tại!\"}");
         }
 
         // 2.Check email đã tồn tại chưa
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email đã tồn tại!");
+            return ResponseEntity
+            .status(HttpStatus.CONFLICT)
+                    .body("{\"message\": \"Email đã tồn tại!\"}");
         }
 
         // 3.Tạo User mới
@@ -50,25 +55,29 @@ public class AuthServiceImpl implements AuthService {
         response.setUsername(savedUser.getUsername());
         response.setEmail(savedUser.getEmail());
 
-        return response;
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
         
     }
 
     @Override
-    public AuthResponse login(LoginRequest request) {
+    public ResponseEntity<?> login(LoginRequest request) {
         // 1.Tìm user theo username
         List<User> users = userRepository.findByUsername(request.getUsername());
         
         // 2.Nếu không tìm thấy
         if (users.isEmpty()) {
-            throw new RuntimeException("Username hoặc password không đúng!");
+            return ResponseEntity
+            .status(HttpStatus.UNAUTHORIZED)
+            .body("{\"message\": \"Username hoặc password không đúng!\"}");
         }
 
         User user = users.get(0);
 
         // 3.Verify password
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Username hoặc password không đúng!");
+            return ResponseEntity
+            .status(HttpStatus.UNAUTHORIZED)
+                    .body("{\"message\": \"Username hoặc password không đúng!\"}");
         }
 
         // 4.Trả về AuthResponse
@@ -77,7 +86,7 @@ public class AuthServiceImpl implements AuthService {
         response.setUsername(user.getUsername());
         response.setEmail(user.getEmail());
 
-        return response;
+        return ResponseEntity.ok(response);
 
     }
     
