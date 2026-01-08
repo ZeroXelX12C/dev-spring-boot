@@ -2,8 +2,7 @@ spring:
   application:
     name: dev
   mongodb:
-    host: localhost
-    port: 27017
-    database: dev_db
+    uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/dev_db}
+
 
         
