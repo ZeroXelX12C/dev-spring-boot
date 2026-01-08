@@ -1,8 +1,16 @@
 # dev-spring-boot
 
-1. Khởi chạy dự án
-docker compose up -d --build
+Spring Boot development environment with Docker Compose.
 
-2. Server port
-localhost:8080 (spring-boot)
-localhost:8081 (mongo express) [username:admin][password:admin]
+## Khởi chạy dự án
+
+```bash
+docker compose up -d --build
+```
+
+## Services
+
+| Service | URL | Credentials |
+|---------|-----|-------------|
+| Spring Boot | http://localhost:8080 | - |
+| Mongo Express | http://localhost:8081 | `admin` / `admin` |
