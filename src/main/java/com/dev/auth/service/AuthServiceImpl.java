@@ -23,7 +23,7 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public ResponseEntity register(RegisterRequest request) {
+    public ResponseEntity<?> register(RegisterRequest request) {
         // 1.Check username đã tồn tại chưa
         if (userRepository.existsByUsername(request.getUsername())) {
             return ResponseEntity
