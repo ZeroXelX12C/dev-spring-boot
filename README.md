@@ -12,5 +12,5 @@ docker compose up -d --build
 
 | Service | URL | Credentials |
 |---------|-----|-------------|
-| Spring Boot | http://localhost:8080 | - |
-| Mongo Express | http://localhost:8081 | `admin` / `admin` |
+| Spring Boot | http://localhost:8081 | - |
+| Mongo Express | http://localhost:8082 | `admin` / `admin` |
