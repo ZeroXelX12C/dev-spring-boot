@@ -37,7 +37,8 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(Arrays.asList(
-            "https://app.apidog.com"
+                "https://app.apidog.com",
+                    "http://localhost:3000"
         ));
 
         configuration.setAllowedHeaders(Arrays.asList(
