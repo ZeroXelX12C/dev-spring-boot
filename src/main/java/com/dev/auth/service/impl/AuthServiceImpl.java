@@ -1,13 +1,13 @@
-package com.dev.freelancer.service.impl;
+package com.dev.auth.service.impl;
 
-import com.dev.freelancer.dto.request.LoginRequest;
-import com.dev.freelancer.dto.request.RefreshTokenRequest;
-import com.dev.freelancer.dto.request.RegisterRequest;
-import com.dev.freelancer.dto.response.AuthResponse;
-import com.dev.freelancer.model.User;
-import com.dev.freelancer.repository.UserRepository;
-import com.dev.freelancer.service.AuthService;
-import com.dev.freelancer.service.JwtService;
+import com.dev.auth.dto.request.LoginRequest;
+import com.dev.auth.dto.request.RefreshTokenRequest;
+import com.dev.auth.dto.request.RegisterRequest;
+import com.dev.auth.dto.response.AuthResponse;
+import com.dev.model.User;
+import com.dev.auth.repository.UserRepository;
+import com.dev.auth.service.AuthService;
+import com.dev.auth.service.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

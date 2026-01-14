@@ -1,6 +1,6 @@
-package com.dev.freelancer.dto.request;
+package com.dev.auth.dto.request;
 
-import com.dev.freelancer.model.enums.Role;
+import com.dev.model.enums.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

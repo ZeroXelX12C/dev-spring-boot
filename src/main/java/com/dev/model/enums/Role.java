@@ -1,4 +1,4 @@
-package com.dev.freelancer.model.enums;
+package com.dev.model.enums;
 
 public enum Role {
     ADMIN,

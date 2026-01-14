@@ -1,10 +1,10 @@
-package com.dev.freelancer.controller;
+package com.dev.auth.controller;
 
-import com.dev.freelancer.dto.request.LoginRequest;
-import com.dev.freelancer.dto.request.RefreshTokenRequest;
-import com.dev.freelancer.dto.request.RegisterRequest;
-import com.dev.freelancer.dto.response.AuthResponse;
-import com.dev.freelancer.service.impl.AuthServiceImpl;
+import com.dev.auth.dto.request.LoginRequest;
+import com.dev.auth.dto.request.RefreshTokenRequest;
+import com.dev.auth.dto.request.RegisterRequest;
+import com.dev.auth.dto.response.AuthResponse;
+import com.dev.auth.service.impl.AuthServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

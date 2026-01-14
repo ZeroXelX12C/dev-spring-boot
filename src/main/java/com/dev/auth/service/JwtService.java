@@ -1,6 +1,6 @@
-package com.dev.freelancer.service;
+package com.dev.auth.service;
 
-import com.dev.freelancer.model.User;
+import com.dev.model.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;

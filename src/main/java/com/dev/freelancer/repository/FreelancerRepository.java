@@ -1,6 +1,6 @@
 package com.dev.freelancer.repository;
 
-import com.dev.freelancer.model.Freelancer;
+import com.dev.model.Freelancer;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

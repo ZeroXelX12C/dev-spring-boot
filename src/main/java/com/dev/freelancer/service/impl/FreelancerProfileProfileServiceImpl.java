@@ -2,12 +2,12 @@ package com.dev.freelancer.service.impl;
 
 import com.dev.freelancer.dto.request.ProfileRequest;
 import com.dev.freelancer.dto.response.ProfileResponse;
-import com.dev.freelancer.exception.ResourceNotFoundException;
-import com.dev.freelancer.model.Freelancer;
-import com.dev.freelancer.model.User;
+import com.dev.exception.ResourceNotFoundException;
+import com.dev.model.Freelancer;
+import com.dev.model.User;
 import com.dev.freelancer.repository.FreelancerRepository;
-import com.dev.freelancer.repository.UserRepository;
-import com.dev.freelancer.service.FreelancerService;
+import com.dev.auth.repository.UserRepository;
+import com.dev.freelancer.service.FreelancerProfileService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class FreelancerServiceImpl implements FreelancerService {
+public class FreelancerProfileProfileServiceImpl implements FreelancerProfileService {
 
     private final FreelancerRepository freelancerRepository;
     private final UserRepository userRepository;

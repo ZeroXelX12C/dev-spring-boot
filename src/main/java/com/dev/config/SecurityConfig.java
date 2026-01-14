@@ -1,6 +1,7 @@
-package com.dev.freelancer.config;
+package com.dev.config;
 
-import com.dev.freelancer.repository.UserRepository;
+import com.dev.auth.repository.UserRepository;
+import com.dev.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,12 +25,9 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -90,7 +88,7 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         return username -> {
             // 1. Tìm User trong DB (Model của bạn)
-            com.dev.freelancer.model.User user = userRepository.findByEmail(username)
+            User user = userRepository.findByEmail(username)
                     .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
             // 2. Map sang UserDetails chuẩn của Spring Security

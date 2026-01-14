@@ -1,7 +1,7 @@
 package com.dev.freelancer.dto.response;
 
-import com.dev.freelancer.model.Freelancer.Experience;
-import com.dev.freelancer.model.Freelancer.Education;
+import com.dev.model.Freelancer.Experience;
+import com.dev.model.Freelancer.Education;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

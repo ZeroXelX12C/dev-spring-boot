@@ -1,4 +1,4 @@
-package com.dev.freelancer.model;
+package com.dev.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

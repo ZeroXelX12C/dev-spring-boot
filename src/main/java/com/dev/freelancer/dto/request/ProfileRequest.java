@@ -1,7 +1,7 @@
 package com.dev.freelancer.dto.request;
 
-import com.dev.freelancer.model.Freelancer.Experience;
-import com.dev.freelancer.model.Freelancer.Education;
+import com.dev.model.Freelancer.Experience;
+import com.dev.model.Freelancer.Education;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

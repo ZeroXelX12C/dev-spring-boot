@@ -1,7 +1,7 @@
-package com.dev.freelancer.model;
+package com.dev.model;
 
-import com.dev.freelancer.model.enums.Gender;
-import com.dev.freelancer.model.enums.Role;
+import com.dev.model.enums.Gender;
+import com.dev.model.enums.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

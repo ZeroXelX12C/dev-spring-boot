@@ -1,6 +1,6 @@
-package com.dev.freelancer.repository;
+package com.dev.auth.repository;
 
-import com.dev.freelancer.model.User;
+import com.dev.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

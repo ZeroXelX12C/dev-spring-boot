@@ -1,4 +1,4 @@
-package com.dev.freelancer.exception;
+package com.dev.exception;
 
 // Class này đại diện cho lỗi "Không tìm thấy dữ liệu"
 public class ResourceNotFoundException extends RuntimeException {

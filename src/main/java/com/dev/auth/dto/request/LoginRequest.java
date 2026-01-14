@@ -1,4 +1,4 @@
-package com.dev.freelancer.dto.request;
+package com.dev.auth.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
