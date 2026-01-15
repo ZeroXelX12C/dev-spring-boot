@@ -48,6 +48,7 @@ public class AuthServiceImpl implements AuthService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.FREELANCER)  // Default role for new users
+                .role(Role.FREELANCER)  // Default role for new users
                 .isActive(true)
                 .build();
 
