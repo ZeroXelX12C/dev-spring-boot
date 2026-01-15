@@ -1,6 +1,6 @@
 # dev-spring-boot
 
-Spring Boot development environment with Docker Compose.
+Spring Boot development environment.
 
 ## Khởi chạy dự án
 
@@ -10,7 +10,6 @@ docker compose up -d --build
 
 ## Services
 
-| Service | URL | Credentials |
-|---------|-----|-------------|
-| Spring Boot | http://localhost:8081 | - |
-| Mongo Express | http://localhost:8082 | `admin` / `admin` |
+| Service | URL |
+|---------|-----|
+| Spring Boot | http://localhost:8081 |
