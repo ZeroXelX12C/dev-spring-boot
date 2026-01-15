@@ -6,13 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * DTO for user login request.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginRequest {
 
     @NotBlank(message = "Email is required")
-    @Email(message = "Email format is invalid")
+    @Email(message = "Invalid email format")
     private String email;
 
     @NotBlank(message = "Password is required")

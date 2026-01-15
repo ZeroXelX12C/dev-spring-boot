@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class FreelancerProfileProfileServiceImpl implements FreelancerProfileService {
+public class FreelancerProfileServiceImpl implements FreelancerProfileService {
 
     private final FreelancerRepository freelancerRepository;
     private final UserRepository userRepository;
@@ -23,23 +23,15 @@ public class FreelancerProfileProfileServiceImpl implements FreelancerProfileSer
 
     @Override
     public ProfileResponse getMyProfile(String userId) {
-        Freelancer freelancer = freelancerRepository.findByUserId(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("Freelancer profile not yet created"));
-
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-
+        Freelancer freelancer = getFreelancerByUserId(userId);
+        User user = getUserById(userId);
         return mapToProfileResponse(freelancer, user);
     }
 
     @Override
     public ProfileResponse getPublicProfile(String userId) {
-        Freelancer freelancer = freelancerRepository.findByUserId(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("Freelancer profile not found"));
-
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-
+        Freelancer freelancer = getFreelancerByUserId(userId);
+        User user = getUserById(userId);
         return mapToProfileResponse(freelancer, user);
     }
 
@@ -53,8 +45,7 @@ public class FreelancerProfileProfileServiceImpl implements FreelancerProfileSer
         freelancer.setUserId(userId);
         Freelancer savedFreelancer = freelancerRepository.save(freelancer);
 
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        User user = getUserById(userId);
 
         boolean isUserUpdated = false;
 
@@ -74,12 +65,30 @@ public class FreelancerProfileProfileServiceImpl implements FreelancerProfileSer
         return mapToProfileResponse(savedFreelancer, user);
     }
 
+    /**
+     * Helper method to get freelancer by userId.
+     */
+    private Freelancer getFreelancerByUserId(String userId) {
+        return freelancerRepository.findByUserId(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Freelancer profile not found"));
+    }
+
+    /**
+     * Helper method to get user by userId.
+     */
+    private User getUserById(String userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+    }
+
+    /**
+     * Helper method to map Freelancer and User to ProfileResponse.
+     */
     private ProfileResponse mapToProfileResponse(Freelancer freelancer, User user) {
         ProfileResponse response = modelMapper.map(freelancer, ProfileResponse.class);
 
         response.setFullName(user.getFullName());
         response.setAvatar(user.getAvatar());
-
         response.setUserId(user.getId());
 
         return response;

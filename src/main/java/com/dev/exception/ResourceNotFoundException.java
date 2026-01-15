@@ -1,8 +1,15 @@
 package com.dev.exception;
 
-// Class này đại diện cho lỗi "Không tìm thấy dữ liệu"
+/**
+ * Exception thrown when a requested resource is not found.
+ * Maps to HTTP 404 Not Found status.
+ */
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {
         super(message);
+    }
+
+    public ResourceNotFoundException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

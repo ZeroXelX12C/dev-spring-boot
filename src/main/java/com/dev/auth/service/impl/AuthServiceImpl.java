@@ -4,6 +4,9 @@ import com.dev.auth.dto.request.LoginRequest;
 import com.dev.auth.dto.request.RefreshTokenRequest;
 import com.dev.auth.dto.request.RegisterRequest;
 import com.dev.auth.dto.response.AuthResponse;
+import com.dev.exception.InvalidRefreshTokenException;
+import com.dev.exception.PasswordMismatchException;
+import com.dev.exception.UserAlreadyExistsException;
 import com.dev.model.User;
 import com.dev.auth.repository.UserRepository;
 import com.dev.auth.service.AuthService;
@@ -30,11 +33,11 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void register(RegisterRequest request) {
         if (!request.getPassword().equals(request.getConfirmPassword())) {
-            throw new RuntimeException("Mật khẩu xác nhận không khớp");
+            throw new PasswordMismatchException();
         }
 
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email đã được sử dụng");
+            throw new UserAlreadyExistsException(request.getEmail());
         }
 
         String fullName = request.getLastName() + " " + request.getFirstName();
@@ -86,10 +89,7 @@ public class AuthServiceImpl implements AuthService {
                     .build();
 
         } catch (Exception e) {
-            throw new RuntimeException("Invalid Refresh Token");
+            throw new InvalidRefreshTokenException();
         }
-    }
-
-    public void logout() {
     }
 }

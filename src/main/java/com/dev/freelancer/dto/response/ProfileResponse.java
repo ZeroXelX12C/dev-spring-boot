@@ -1,16 +1,17 @@
 package com.dev.freelancer.dto.response;
 
-import com.dev.model.Freelancer.Experience;
-import com.dev.model.Freelancer.Education;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import com.dev.model.Education;
+import com.dev.model.Experience;
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Builder

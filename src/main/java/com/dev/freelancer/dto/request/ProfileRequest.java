@@ -1,13 +1,14 @@
 package com.dev.freelancer.dto.request;
 
-import com.dev.model.Freelancer.Experience;
-import com.dev.model.Freelancer.Education;
+import java.math.BigDecimal;
+import java.util.List;
+
+import com.dev.model.Education;
+import com.dev.model.Experience;
+
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 @Data
 public class ProfileRequest {

@@ -16,6 +16,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
+/**
+ * User entity representing all user types in the system.
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -27,13 +30,13 @@ public class User {
     private String id;
 
     @Indexed(unique = true)
-    @NotBlank(message = "Email là bắt buộc")
-    @Email(message = "Email không đúng định dạng")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
     private String email;
 
     private String password;
 
-    @NotBlank(message = "Họ tên là bắt buộc")
+    @NotBlank(message = "Full name is required")
     private String fullName;
 
     private String phone;
@@ -44,9 +47,9 @@ public class User {
 
     private Gender gender;
 
-    private Role role; // ADMIN, CLIENT, FREELANCER
+    private Role role;
 
-    private boolean isActive = true;
+    private boolean isActive;
 
     @CreatedDate
     private LocalDateTime createdAt;
