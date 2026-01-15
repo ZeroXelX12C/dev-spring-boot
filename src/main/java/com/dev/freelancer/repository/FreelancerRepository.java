@@ -8,6 +8,10 @@ import java.util.Optional;
 
 @Repository
 public interface FreelancerRepository extends MongoRepository<Freelancer, String> {
-    // Tìm kiếm profile dựa trên userId (từ JWT)
+    /**
+     * Find freelancer profile by user ID.
+     * @param userId User ID from JWT token
+     * @return Freelancer profile if exists
+     */
     Optional<Freelancer> findByUserId(String userId);
 }

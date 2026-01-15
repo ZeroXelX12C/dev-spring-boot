@@ -14,6 +14,10 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Freelancer profile entity.
+ * Contains professional information, skills, experience, and education.
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -41,22 +45,4 @@ public class Freelancer {
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
-
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class Experience {
-        private String position; //vai trò
-        private String company; //cty
-        private String years; //năm
-    }
-
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class Education {
-        private String schoolName;
-        private String degree;
-        private String fieldOfStudy;
-    }
 }

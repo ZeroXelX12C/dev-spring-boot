@@ -6,6 +6,10 @@ import com.dev.auth.dto.response.AuthResponse;
 import com.dev.auth.dto.request.LoginRequest;
 import com.dev.auth.dto.request.RegisterRequest;
 
+/**
+ * Authentication service interface.
+ * Handles user registration, login, and token refresh.
+ */
 public interface AuthService {
 
     void register(RegisterRequest request);
@@ -13,6 +17,4 @@ public interface AuthService {
     AuthResponse login(LoginRequest request);
 
     AuthResponse refreshToken(RefreshTokenRequest request);
-
-    void logout();
 }

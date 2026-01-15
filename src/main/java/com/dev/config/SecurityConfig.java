@@ -3,7 +3,6 @@ package com.dev.config;
 import com.dev.auth.repository.UserRepository;
 import com.dev.model.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,20 +37,30 @@ public class SecurityConfig {
     @Value("${application.security.jwt.secret-key}")
     private String secretKey;
 
-    @Autowired
-    private UserRepository userRepository;
+    @Value("${application.cors.allowed-origins}")
+    private String[] allowedOrigins;
+
+    @Value("${application.cors.allowed-methods}")
+    private String[] allowedMethods;
+
+    @Value("${application.cors.allowed-headers}")
+    private String[] allowedHeaders;
+
+    @Value("${application.cors.allow-credentials}")
+    private boolean allowCredentials;
+
+    private final UserRepository userRepository;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Cấu hình CORS
+                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // CORS configuration
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/v1/auth/**", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/freelancers/*/profile").permitAll()
                         .anyRequest().authenticated()
                 )
-                //JwtAuthenticationFilter
                 .oauth2ResourceServer(oauth2 ->
                         oauth2.jwt(jwtConfigurer -> jwtConfigurer.decoder(jwtDecoder()))
                 )
@@ -60,7 +69,9 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // Bean giải mã Token
+    /**
+     * JWT decoder bean for validating access tokens.
+     */
     @Bean
     public JwtDecoder jwtDecoder() {
         byte[] keyBytes = secretKey.getBytes();
@@ -73,7 +84,9 @@ public class SecurityConfig {
                 .build();
     }
 
-    // Bean mã hóa mật khẩu
+    /**
+     * Password encoder bean using BCrypt.
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -84,30 +97,36 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 
+    /**
+     * UserDetailsService implementation for loading user-specific data.
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> {
-            // 1. Tìm User trong DB (Model của bạn)
+            // Find user in database
             User user = userRepository.findByEmail(username)
                     .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-            // 2. Map sang UserDetails chuẩn của Spring Security
+            // Map to Spring Security UserDetails
             return org.springframework.security.core.userdetails.User
                     .withUsername(user.getEmail())
                     .password(user.getPassword())
-                    .roles(user.getRole().name()) // Tự động thêm prefix "ROLE_"
+                    .roles(user.getRole().name()) // Automatically adds "ROLE_" prefix
                     .build();
         };
     }
 
-    // Cấu hình CORS cho Next.js
+    /**
+     * CORS configuration for frontend origins.
+     * Values loaded from application.yaml.
+     */
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("http://localhost:3000", "https://app.apidog.com"));
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
-        config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "x-auth-token"));
-        config.setAllowCredentials(true);
+        config.setAllowedOrigins(Arrays.asList(allowedOrigins));
+        config.setAllowedMethods(Arrays.asList(allowedMethods));
+        config.setAllowedHeaders(Arrays.asList(allowedHeaders));
+        config.setAllowCredentials(allowCredentials);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

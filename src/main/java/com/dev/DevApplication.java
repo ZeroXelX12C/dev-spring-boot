@@ -6,23 +6,27 @@ import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvEntry;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 
+/**
+ * Main application class for FreelancerUp.
+ * Loads environment variables from .env file before starting Spring Boot.
+ */
 @SpringBootApplication
 @EnableMongoAuditing
 public class DevApplication {
 
     public static void main(String[] args) {
-        // 1. Load .env
+        // Load .env file
         Dotenv dotenv = Dotenv.configure()
                 .ignoreIfMissing()
                 .load();
 
-        // 2. Vòng lặp: Lấy tất cả biến trong .env nạp vào System Property
+        // Load all environment variables into System properties
         for (DotenvEntry entry : dotenv.entries()) {
             System.setProperty(entry.getKey(), entry.getValue());
-            System.out.println("✅ Loaded env: " + entry.getKey());
+            System.out.println("Loaded environment variable: " + entry.getKey());
         }
 
-        // 3. Chạy Spring Boot
+        // Start Spring Boot application
         SpringApplication.run(DevApplication.class, args);
     }
 }
