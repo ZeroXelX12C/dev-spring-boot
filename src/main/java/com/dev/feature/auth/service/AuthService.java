@@ -1,10 +1,10 @@
-package com.dev.auth.service;
+package com.dev.feature.auth.service;
 
-import com.dev.auth.dto.request.RefreshTokenRequest;
-import com.dev.auth.dto.response.AuthResponse;
+import com.dev.feature.auth.dto.request.RefreshTokenRequest;
+import com.dev.feature.auth.dto.response.AuthResponse;
 
-import com.dev.auth.dto.request.LoginRequest;
-import com.dev.auth.dto.request.RegisterRequest;
+import com.dev.feature.auth.dto.request.LoginRequest;
+import com.dev.feature.auth.dto.request.RegisterRequest;
 
 /**
  * Authentication service interface.

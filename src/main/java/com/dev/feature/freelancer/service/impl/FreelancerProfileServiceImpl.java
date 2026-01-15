@@ -1,13 +1,13 @@
-package com.dev.freelancer.service.impl;
+package com.dev.feature.freelancer.service.impl;
 
-import com.dev.freelancer.dto.request.ProfileRequest;
-import com.dev.freelancer.dto.response.ProfileResponse;
+import com.dev.feature.freelancer.dto.request.ProfileRequest;
+import com.dev.feature.freelancer.dto.response.ProfileResponse;
 import com.dev.exception.ResourceNotFoundException;
 import com.dev.model.Freelancer;
 import com.dev.model.User;
-import com.dev.freelancer.repository.FreelancerRepository;
-import com.dev.auth.repository.UserRepository;
-import com.dev.freelancer.service.FreelancerProfileService;
+import com.dev.feature.freelancer.repository.FreelancerRepository;
+import com.dev.feature.auth.repository.UserRepository;
+import com.dev.feature.freelancer.service.FreelancerProfileService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

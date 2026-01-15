@@ -1,4 +1,4 @@
-package com.dev.auth.controller;
+package com.dev.feature.auth.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dev.auth.dto.request.LoginRequest;
-import com.dev.auth.dto.request.RefreshTokenRequest;
-import com.dev.auth.dto.request.RegisterRequest;
-import com.dev.auth.dto.response.AuthResponse;
-import com.dev.auth.service.AuthService;
+import com.dev.feature.auth.dto.request.LoginRequest;
+import com.dev.feature.auth.dto.request.RefreshTokenRequest;
+import com.dev.feature.auth.dto.request.RegisterRequest;
+import com.dev.feature.auth.dto.response.AuthResponse;
+import com.dev.feature.auth.service.AuthService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

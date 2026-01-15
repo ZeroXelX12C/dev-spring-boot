@@ -1,4 +1,4 @@
-package com.dev.freelancer.dto.request;
+package com.dev.feature.freelancer.dto.request;
 
 import java.math.BigDecimal;
 import java.util.List;

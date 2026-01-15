@@ -1,8 +1,8 @@
-package com.dev.freelancer.controller;
+package com.dev.feature.freelancer.controller;
 
-import com.dev.freelancer.dto.request.ProfileRequest;
-import com.dev.freelancer.dto.response.ProfileResponse;
-import com.dev.freelancer.service.FreelancerProfileService;
+import com.dev.feature.freelancer.dto.request.ProfileRequest;
+import com.dev.feature.freelancer.dto.response.ProfileResponse;
+import com.dev.feature.freelancer.service.FreelancerProfileService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

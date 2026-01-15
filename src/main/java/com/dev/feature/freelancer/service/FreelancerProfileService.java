@@ -1,7 +1,7 @@
-package com.dev.freelancer.service;
+package com.dev.feature.freelancer.service;
 
-import com.dev.freelancer.dto.request.ProfileRequest;
-import com.dev.freelancer.dto.response.ProfileResponse;
+import com.dev.feature.freelancer.dto.request.ProfileRequest;
+import com.dev.feature.freelancer.dto.response.ProfileResponse;
 
 public interface FreelancerProfileService {
 

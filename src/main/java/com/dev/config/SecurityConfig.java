@@ -1,6 +1,6 @@
 package com.dev.config;
 
-import com.dev.auth.repository.UserRepository;
+import com.dev.feature.auth.repository.UserRepository;
 import com.dev.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
