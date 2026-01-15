@@ -1,4 +1,4 @@
-package com.dev.auth.service;
+package com.dev.feature.auth.service;
 
 import com.dev.model.User;
 import io.jsonwebtoken.Jwts;

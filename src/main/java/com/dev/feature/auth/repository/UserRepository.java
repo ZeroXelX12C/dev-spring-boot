@@ -1,4 +1,4 @@
-package com.dev.auth.repository;
+package com.dev.feature.auth.repository;
 
 import com.dev.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;

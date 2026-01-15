@@ -1,4 +1,4 @@
-package com.dev.freelancer.repository;
+package com.dev.feature.freelancer.repository;
 
 import com.dev.model.Freelancer;
 import org.springframework.data.mongodb.repository.MongoRepository;

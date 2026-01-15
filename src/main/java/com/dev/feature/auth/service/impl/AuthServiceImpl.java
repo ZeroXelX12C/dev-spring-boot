@@ -1,16 +1,16 @@
-package com.dev.auth.service.impl;
+package com.dev.feature.auth.service.impl;
 
-import com.dev.auth.dto.request.LoginRequest;
-import com.dev.auth.dto.request.RefreshTokenRequest;
-import com.dev.auth.dto.request.RegisterRequest;
-import com.dev.auth.dto.response.AuthResponse;
+import com.dev.feature.auth.dto.request.LoginRequest;
+import com.dev.feature.auth.dto.request.RefreshTokenRequest;
+import com.dev.feature.auth.dto.request.RegisterRequest;
+import com.dev.feature.auth.dto.response.AuthResponse;
 import com.dev.exception.InvalidRefreshTokenException;
 import com.dev.exception.PasswordMismatchException;
 import com.dev.exception.UserAlreadyExistsException;
 import com.dev.model.User;
-import com.dev.auth.repository.UserRepository;
-import com.dev.auth.service.AuthService;
-import com.dev.auth.service.JwtService;
+import com.dev.feature.auth.repository.UserRepository;
+import com.dev.feature.auth.service.AuthService;
+import com.dev.feature.auth.service.JwtService;
 import com.dev.model.enums.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

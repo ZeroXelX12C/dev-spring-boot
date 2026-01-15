@@ -1,4 +1,4 @@
-package com.dev.freelancer.dto.response;
+package com.dev.feature.freelancer.dto.response;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
