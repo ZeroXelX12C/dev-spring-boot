@@ -11,6 +11,7 @@ import com.dev.model.User;
 import com.dev.auth.repository.UserRepository;
 import com.dev.auth.service.AuthService;
 import com.dev.auth.service.JwtService;
+import com.dev.model.enums.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -46,7 +47,7 @@ public class AuthServiceImpl implements AuthService {
                 .fullName(fullName.trim())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole())
+                .role(Role.FREELANCER)  // Default role for new users
                 .isActive(true)
                 .build();
 

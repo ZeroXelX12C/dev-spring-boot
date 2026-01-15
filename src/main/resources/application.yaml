@@ -2,12 +2,15 @@ spring:
   application:
     name: dev
   mongodb:
-    uri: ${SPRING_DATA_MONGODB_URI}
+    uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/dev_db}
+
+server:
+  port: 8081
 
 application:
   security:
     jwt:
-      secret-key: ${JWT_SECRET_KEY}
+      secret-key: ${JWT_SECRET_KEY:default-secret-key-must-be-at-least-256-bits-long-for-hs256-algorithm-change-this-in-production}
       expiration: 86400000          # 1 day (ms)
       refresh-token:
         expiration: 604800000       # 7 days (ms)
