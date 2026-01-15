@@ -1,13 +1,18 @@
 package com.dev.auth.service;
 
-import org.springframework.http.ResponseEntity;
+import com.dev.auth.dto.request.RefreshTokenRequest;
+import com.dev.auth.dto.response.AuthResponse;
 
-import com.dev.auth.dto.LoginRequest;
-import com.dev.auth.dto.RegisterRequest;
+import com.dev.auth.dto.request.LoginRequest;
+import com.dev.auth.dto.request.RegisterRequest;
 
 public interface AuthService {
-    ResponseEntity<?> register(RegisterRequest request);
 
-    ResponseEntity<?> login(LoginRequest request);
+    void register(RegisterRequest request);
 
+    AuthResponse login(LoginRequest request);
+
+    AuthResponse refreshToken(RefreshTokenRequest request);
+
+    void logout();
 }

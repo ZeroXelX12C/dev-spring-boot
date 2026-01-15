@@ -1,4 +1,4 @@
-package com.dev.auth.model;
+package com.dev.model.enums;
 
 public enum Gender {
     MALE,
